@@ -105,6 +105,7 @@ export const register = async (req, res) => {
 //         console.log(error);
 //     }
 // }
+// login controller
 
 export const login = async (req, res) => {
                      console.log('req.body login',req.body)
