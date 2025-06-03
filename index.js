@@ -17,7 +17,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 
-const allowedOrigins = ['http://localhost:5173', 'https://job-portal-nu-orpin-47.vercel.app/'];
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://job-portal-nu-orpin-47.vercel.app'
+];
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -27,10 +30,13 @@ const corsOptions = {
       callback(new Error('Not allowed by CORS'));
     }
   },
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 };
 
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // <--- handles preflight
 
 // const corsOptions = {
 //     origin:'http://localhost:5173',
